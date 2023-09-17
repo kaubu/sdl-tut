@@ -9,14 +9,21 @@ COMPILER_FLAGS := "-w"
 LINKER_FLAGS := "-lSDL2"
 
 # OBJS specifies which files to compile as part of the project
-OBJS := "01_hello_SDL.cpp"
+OBJS := "src/main.cpp"
 
 # OBJ_NAME specifies the name of our exectuable
-OBJ_NAME := "01_hello_SDL"
+OBJ_NAME := "sdl_tut"
 
 default:
     just -l
 
+alias b := build
 # Compiles the executable
 build:
     {{CC}} {{COMPILER_FLAGS}} {{LINKER_FLAGS}} {{OBJS}} -o {{OBJ_NAME}}
+
+alias r := run
+# Build then run
+run:
+    just build
+    ./sdl_tut
